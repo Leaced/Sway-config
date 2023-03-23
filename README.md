@@ -8,9 +8,9 @@ My current Sway Config for Arch Linux. On other Distros there could be problems,
 
 ### Setting up
 - install dependencies
-- Place this files in XDG_CONFIG_HOME
+- Place the files in .config in XDG_CONFIG_HOME
+- add the environment variables to your .bashrc
 - make shell-scripts executable (chmod u+x filename.sh)
-- edit outputs and the background images in sway/config
 - edit the .config/sway/gammastep.ini to your timezone
 - start sway
 
@@ -25,3 +25,7 @@ My current Sway Config for Arch Linux. On other Distros there could be problems,
 - [slurp](https://github.com/emersion/slurp)
 
 install all with: ```sudo pacman -Syu alacritty bemenu noto-fonts-emoji gammastep grim mako polkit-gnome slurp```
+
+### Licences
+wallpaper2 is "Winter Fairies" by David Revoy, licensed under Creative Commons Attribution 4.0.
+You can download it [here](https://www.peppercarrot.com/en/viewer/artworks-src__2020-12-21_Winter-Fairies_by-David-Revoy.html) or find more artworks [here](https://www.peppercarrot.com/en/artworks/artworks.html)
