@@ -3,8 +3,8 @@ My current Sway Config for Arch Linux. On other Distros there could be problems,
 
 **Setting up**
 - Place this files in XDG_CONFIG_HOME
-- edit the background images in sway/config
-- edit the .config/sway/gammastep.ini
+- edit outputs and the background images in sway/config
+- edit the .config/sway/gammastep.ini to your timezone
 
 **Includes:**
 - custom menu with screenshots, gammastep-toggle and other functions
