@@ -2,9 +2,9 @@
 My current Sway Config for Arch Linux. On other Distros there could be problems, if they have no systemd or are missing gnu-utils.
 
 ### Includes:
-- custom menu with screenshots, gammastep-toggle and other functions
-- many bindsyms
-- xwayland and wine support (for wine see [this issue](https://wiki.archlinux.org/title/Sway#Mouse_not_working_in_WINE_applications))
+- customizable scripts for menu, screenshots, gammastep and other functions
+- many bindsyms ([neo2](https://www.neo-layout.org/) keyboard layout)
+- already set up to support xwayland and wine (for wine also see [this issue](https://wiki.archlinux.org/title/Sway#Mouse_not_working_in_WINE_applications))
 
 ### Setting up
 - install dependencies
