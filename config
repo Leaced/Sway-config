@@ -1,0 +1,265 @@
+### noch zu tun:
+# Farbeinstellungen für Alacritty und Mako und swaynag automatisch anpassen
+# Screenshot optimieren: https://github.com/de-arl/slurpshot
+# https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Hibernation
+
+
+### XWayland
+   # xwayland disable
+
+
+### Variables
+   # Logo key. Use Mod1 for Alt.
+	set $mod Mod4
+   # Home row direction key
+	set $left n
+	set $down r
+	set $up t
+	set $right d
+   # Your preferred terminal emulator
+	set $term alacritty
+   # Design
+	set $primary 8d00c4
+	set $highlight c227ff
+	set $error c40000
+	set $backgr 28242a
+	set $lightbackgr 504854
+	set $border 000000
+	set $text ffffff
+	set $wallpaper ~/.config/sway/der-kleine-prinz_1200x800px.jpg
+	set $wallpaper2 ~/.config/sway/2020-12-21_The-fairy-fir-tree_by-David-Revoy.jpg
+        # The default font for sway can be set with font. Better use fontconfig
+   # Your preferred applications
+	set $launcher bemenu-run -m -2 -l 10 -i -p ▶ -B 1 --tf "#$highlight" --fb "#$backgr" --nb "#$backgr" --hb "#$backgr" --hf "#$highlight" --ab "#$backgr" --bdr "#$border" | xargs swaymsg exec --
+	set $menu ~/.config/sway/menu.sh -m -2 -l 10 -i -B 1 --tf "#$highlight" --fb "#$backgr" --nb "#$backgr" --hb "#$backgr" --hf "#$highlight" --ab "#$backgr" --bdr "#$border"
+	set $term alacritty
+	set $lock swaylock -f -e -i DVI-I-1:"$wallpaper2" -i "$wallpaper" -s fill --indicator-x-position 100 --ring-color "$primary" --ring-clear-color "$highlight" --ring-ver-color "$lightbackgr" --ring-wrong-color "$error" --inside-color 00000000 --inside-clear-color 00000000 --inside-ver-color 00000000 --inside-wrong-color 00000000 --key-hl-color "$highlight" --bs-hl-color "$error" --text-clear-color "$text" --text-ver-color "$text" --text-wrong-color "$text" --text-caps-lock-color "$text"
+
+
+### Autostart
+   exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+   exec gammastep-indicator -c ~/.config/sway/gammastep.ini
+   exec veracrypt -k "" --pim=0 --protect-hidden=no /dev/sda1 /mnt/veracrypt1
+   exec riseup-vpn -w
+   exec mako --background-color "#$backgr" --text-color "#$text" -c ~/.config/sway/mako.conf
+   exec_always xrandr --output XWAYLAND0 --primary
+
+
+### Output configuration
+   output DP-3 resolution 1920x1080 scale 1 position 0,0 bg $wallpaper2 fill
+   output HDMI-A-2 resolution 848x480 scale 1 position 0,0 bg $wallpaper fill
+   focus output DP-3
+   # You can get the names of your outputs by running: swaymsg -t get_outputs
+   # more wallpaper are available in /usr/share/backgrounds/sway/
+
+
+### Idle configuration
+   for_window [class="^.*"] inhibit_idle fullscreen
+   for_window [app_id="^.*"] inhibit_idle fullscreen
+   exec swayidle -w \
+   timeout 180 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+   timeout 185 'systemctl suspend' \
+   before-sleep '$lock' \
+# before-sleep 'swaylock --daemonize --ignore-empty-password --image DVI-I-1:$wallpaper2 --image $wallpaper --scaling fill --indicator-x-position 100' \
+
+
+### Input configuration
+   input * {
+   xkb_model "pc101"
+   xkb_layout "de"
+   xkb_variant "neo"
+   }
+   # input "2:14:SynPS/2_Synaptics_TouchPad" {
+   # dwt enabled
+   # tap enabled
+   # natural_scroll enabled
+   # middle_emulation enabled
+   # }
+   # You can get the names of your inputs by running: swaymsg -t get_inputs
+
+
+### Key bindings
+#
+# Basics:
+#
+   # Start launcher, terminal and menus
+   bindsym $mod+Return exec $term
+   bindsym $mod+a exec $launcher
+   bindsym XF86Search exec $launcher
+   bindsym $mod+Shift+l exec $menu
+
+   # Kill focused window
+   bindsym $mod+Shift+x kill
+
+   # Drag windows by holding down $mod and left mouse button.
+   # Resize them with right mouse button + $mod.
+   # Change normal to inverse to use left mouse button for resizing and right mouse button for dragging.
+   floating_modifier $mod normal
+
+   # Reload the configuration file
+   bindsym $mod+Shift+c reload
+
+   # Making a Screenshot
+   bindsym $mod+Shift+i exec ~/.config/sway/screenshot.sh
+
+   # Quit Notifications from mako
+   bindsym Control+Space exec makoctl dismiss
+   bindsym Control+Shift+Space exec makoctl dismiss --all
+
+   # Exit sway (logs you out of your Wayland session)
+   bindsym $mod+Shift+Backspace exec swaymsg exit
+#
+# Multimedia keys
+#
+   # Pulse Audio controls
+   bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+   bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+   bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+   bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+   # Display controls
+   bindsym --locked XF86MonBrightnessDown exec brightnessctl set -5%
+   bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
+   # Media player controls (MPRIS)
+   bindsym --locked XF86AudioPlay exec playerctl play-pause
+   bindsym --locked XF86AudioNext exec playerctl next
+   bindsym --locked XF86AudioPrev exec playerctl previous
+#
+# Moving around:
+#
+   # Move your focus around
+   bindsym $mod+$left focus left
+   bindsym $mod+$down focus down
+   bindsym $mod+$up focus up
+   bindsym $mod+$right focus right
+   # Or use $mod+[up|down|left|right]
+   bindsym $mod+Left focus left
+   bindsym $mod+Down focus down
+   bindsym $mod+Up focus up
+   bindsym $mod+Right focus right
+
+   # Move the focused window
+   bindsym $mod+Shift+$left move left
+   bindsym $mod+Shift+$down move down
+   bindsym $mod+Shift+$up move up
+   bindsym $mod+Shift+$right move right
+   # Ditto, with arrow keys
+   bindsym $mod+Shift+Left move left
+   bindsym $mod+Shift+Down move down
+   bindsym $mod+Shift+Up move up
+   bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+   # Switch to workspace
+   bindsym $mod+1 workspace number 1
+   bindsym $mod+2 workspace number 2
+   bindsym $mod+3 workspace number 3
+   bindsym $mod+4 workspace number 4
+   bindsym $mod+5 workspace number 5
+   bindsym $mod+6 workspace number 6
+   bindsym $mod+7 workspace number 7
+   bindsym $mod+8 workspace number 8
+   bindsym $mod+9 workspace number 9
+   bindsym $mod+0 workspace number 10
+   # Move focused container to workspace
+   bindsym $mod+Shift+1 move container to workspace number 1
+   bindsym $mod+Shift+2 move container to workspace number 2
+   bindsym $mod+Shift+3 move container to workspace number 3
+   bindsym $mod+Shift+4 move container to workspace number 4
+   bindsym $mod+Shift+5 move container to workspace number 5
+   bindsym $mod+Shift+6 move container to workspace number 6
+   bindsym $mod+Shift+7 move container to workspace number 7
+   bindsym $mod+Shift+8 move container to workspace number 8
+   bindsym $mod+Shift+9 move container to workspace number 9
+   bindsym $mod+Shift+0 move container to workspace number 10
+   # Note: workspaces can have any name you want, not just numbers.
+#
+# Layout stuff:
+#
+   # You can "split" the current object of your focus with
+   # $mod+b or $mod+v, for horizontal and vertical splits respectively.
+   bindsym $mod+z splith
+   bindsym $mod+p splitv
+
+   # Switch the current container between different layout styles
+   bindsym $mod+i layout stacking
+   bindsym $mod+v layout tabbed
+   bindsym $mod+l layout toggle split
+
+   # Make the current focus fullscreen
+   bindsym $mod+e fullscreen
+
+   # Toggle the current focus between tiling and floating mode
+   bindsym $mod+Shift+space floating toggle
+
+   # Swap focus between the tiling area and the floating area
+   bindsym $mod+space focus mode_toggle
+
+   # Move focus to the parent container
+   bindsym $mod+u focus parent
+#
+# Scratchpad:
+#
+   # Sway has a "scratchpad", which is a bag of holding for windows.
+   # You can send windows there and get them back later.
+
+   # Move the currently focused window to the scratchpad
+   bindsym $mod+Shift+j move scratchpad
+
+   # Show the next scratchpad window or hide the focused scratchpad window.
+   # If there are multiple scratchpad windows, this command cycles through them.
+   bindsym $mod+j scratchpad show
+#
+# Resizing containers:
+#
+   mode "resize" {
+   bindsym $left resize shrink width 10px
+   bindsym $down resize grow height 10px
+   bindsym $up resize shrink height 10px
+   bindsym $right resize grow width 10px
+
+   # Ditto, with arrow keys
+   bindsym Left resize shrink width 10px
+   bindsym Down resize grow height 10px
+   bindsym Up resize shrink height 10px
+   bindsym Right resize grow width 10px
+
+   # Return to default mode
+   bindsym Return mode "default"
+   bindsym Escape mode "default"
+   }
+   bindsym $mod+c mode "resize"
+
+
+### Status Bar:
+   bar {
+   position top
+   # When the status_command prints a new line to stdout, swaybar updates.
+   # status_command while date +'%d-%m-%Y %l:%M:%S %p'; do sleep 1; done
+   status_command i3status
+   # mode hide
+
+   colors {
+       statusline $text
+       background $backgr
+       separator $backgr
+       # class			border		backgr.		text
+       focused_workspace	$primary 	$primary	$text
+       active_workspace		$lightbackgr	$lightbackgr	$text
+       urgent_workspace		$highlight	$backgr		$text
+       inactive_workspace	$backgr		$backgr		$text
+       }
+   }
+
+
+### Titlebars
+   default_border pixel 2
+   default_floating_border pixel
+   hide_edge_borders smart
+
+   # client.class		border	backgr.	text	indicator	child_border
+   client.focused		$backgr	$backgr	$text	$primary	$primary
+   # client.focused_inactive	$backgr	$backgr	$text	$backgr 	$primary
+   client.unfocused		$backgr	$backgr	$text	$backgr 	$backgr
+   client.urgent		$backgr	$backgr	$text	$highlight 	$highlight
+
