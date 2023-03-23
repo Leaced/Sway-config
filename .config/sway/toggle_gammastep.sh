@@ -2,7 +2,7 @@
 # This script will toggle gammastep
 # Dependencies: gammastep
 
-PID="$(ps -e | grep gammastep | awk -F ' ' '{print $1}')"
+PID="$(ps -e | grep gammastep | awk '{print $1}')"
 
 if [[ $PID > 0 ]]; then
 	kill $PID
