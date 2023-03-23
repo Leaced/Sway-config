@@ -20,9 +20,8 @@ My current Sway Config for Arch Linux. On other Distros there could be problems,
 - emoji-font (e.g. [noto-emoji](https://github.com/googlefonts/noto-emoji))
 - [gammastep](https://gitlab.com/chinstrap/gammastep)
 - [grim](https://sr.ht/~emersion/grim/)
-- [i3status](https://github.com/i3/i3status)
 - [mako](https://github.com/emersion/mako)
 - [polkit-gnome](https://gitlab.gnome.org/Archive/policykit-gnome)
 - [slurp](https://github.com/emersion/slurp)
 
-install all with: ```sudo pacman -Syu alacritty bemenu noto-fonts-emoji gammastep grim i3status mako polkit-gnome slurp```
+install all with: ```sudo pacman -Syu alacritty bemenu noto-fonts-emoji gammastep grim mako polkit-gnome slurp```
