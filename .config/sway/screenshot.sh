@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 # This script will take a screenshot
-# Dependencies: sway, grim, slurp, gnu-utils
+# Dependencies: sway, grim, slurp
 
 FILENAME="$HOME/screenshot-$(date +'%Y-%m-%d-%H%M%S.png')"
 

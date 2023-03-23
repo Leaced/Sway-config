@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 # This script will open a little menu with different options
-# Dependencies: Sway, Bemenu, Unicode, systemd
+# Dependencies: Bemenu, emoji-font, systemd
 
 screenshot () {
 case "$(echo -e "🖧 ...von allen Bildschirmen
