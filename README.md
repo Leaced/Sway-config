@@ -14,13 +14,13 @@ My current Sway Config for Arch Linux. On other Distros there could be problems,
 - start sway
 
 ### Dependencies:
-- alacritty
-- bemenu
-- emoji-font (e.g. noto-fonts-emoji)
-- gammastep
-- grim
-- mako
-- polkit-gnome
-- slurp
+- [alacritty](https://github.com/alacritty/alacritty)
+- [bemenu](https://github.com/Cloudef/bemenu)
+- emoji-font (e.g. [noto-emoji](https://github.com/googlefonts/noto-emoji))
+- [gammastep](https://gitlab.com/chinstrap/gammastep)
+- [grim](https://sr.ht/~emersion/grim/)
+- [mako](https://github.com/emersion/mako)
+- [polkit-gnome](https://gitlab.gnome.org/Archive/policykit-gnome)
+- [slurp](https://github.com/emersion/slurp)
 
 install all with: ```sudo pacman -Syu alacritty bemenu noto-fonts-emoji gammastep grim mako polkit-gnome slurp```
