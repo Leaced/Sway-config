@@ -27,5 +27,5 @@ My current Sway Config for Arch Linux. On other Distros there could be problems,
 install all with: ```sudo pacman -Syu alacritty bemenu noto-fonts-emoji gammastep grim mako polkit-gnome slurp```
 
 ### Licences
-wallpaper2 is "Winter Fairies" by David Revoy, licensed under Creative Commons Attribution 4.0.
+the wallpaper is "Winter Fairies" by David Revoy, licensed under Creative Commons Attribution 4.0.
 You can download it [here](https://www.peppercarrot.com/en/viewer/artworks-src__2020-12-21_Winter-Fairies_by-David-Revoy.html) or find more artworks [here](https://www.peppercarrot.com/en/artworks/artworks.html)
