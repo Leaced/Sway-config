@@ -1,5 +1,7 @@
 # SwayWM
-My current Sway Config for Arch Linux. On other Distros there could be problems, if they have no systemd or are missing gnu-utils.
+My current SwayWM Setup for Arch Linux. On other Distros there could be problems, if they have no systemd or are missing gnu-utils.
+
+![](https://github.com/Leaced/Sway-config/blob/main/screenshot-2023-03-23-170929.png)
 
 ### Includes:
 - customizable scripts for menu, screenshots, gammastep and other functions
