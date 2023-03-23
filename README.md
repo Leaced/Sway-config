@@ -8,12 +8,16 @@ My current Sway Config for Arch Linux. On other Distros there could be problems,
 
 **Includes:**
 - custom menu with screenshots, gammastep-toggle and other functions
+- many bindsyms
+- xwayland and wine support (for wine see [this issue](https://wiki.archlinux.org/title/Sway#Mouse_not_working_in_WINE_applications))
 
 **Dependencies:**
+- alacritty
+- bemenu
+- emoji-font (e.g. noto-fonts-emoji)
+- fontconfig
 - gammastep
 - grim
 - mako
+- polkit-gnome
 - slurp
-- emoji-font (e.g. noto-fonts-emoji)
-- bemenu
-- fontconfig
