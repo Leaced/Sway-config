@@ -5,3 +5,4 @@ Dependencies:
 - Mako
 - grim
 - slurp
+- gammastep
