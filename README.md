@@ -11,4 +11,3 @@ My current Sway Config. Place this files in XDG_CONFIG_HOME and edit the backgro
 - gammastep
 - emoji-font (e.g. noto-fonts-emoji)
 - bemenu
-- systemd
