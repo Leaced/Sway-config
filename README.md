@@ -6,3 +6,4 @@ Dependencies:
 - grim
 - slurp
 - gammastep
+- emoji-font (e.g. noto-fonts-emoji)
