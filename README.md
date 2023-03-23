@@ -9,6 +9,7 @@ My current Sway Config for Arch Linux. On other Distros there could be problems,
 ### Setting up
 - install dependencies
 - Place this files in XDG_CONFIG_HOME
+- make shell-scripts executable (chmod u+x filename.sh)
 - edit outputs and the background images in sway/config
 - edit the .config/sway/gammastep.ini to your timezone
 - start sway
