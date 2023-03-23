@@ -22,14 +22,13 @@
 	set $lightbackgr 504854
 	set $border 000000
 	set $text ffffff
-	set $wallpaper ~/.config/sway/der-kleine-prinz_1200x800px.jpg
-	set $wallpaper2 ~/.config/sway/2020-12-21_The-fairy-fir-tree_by-David-Revoy.jpg
+	set $wallpaper ~/.config/sway/2020-12-21_The-fairy-fir-tree_by-David-Revoy.jpg
         # The default font for sway can be set with font. Better use fontconfig
    # Your preferred applications
 	set $launcher bemenu-run -m -2 -l 10 -i -p ▶ -B 1 --tf "#$highlight" --fb "#$backgr" --nb "#$backgr" --hb "#$backgr" --hf "#$highlight" --ab "#$backgr" --bdr "#$border" | xargs swaymsg exec --
 	set $menu ~/.config/sway/menu.sh -m -2 -l 10 -i -B 1 --tf "#$highlight" --fb "#$backgr" --nb "#$backgr" --hb "#$backgr" --hf "#$highlight" --ab "#$backgr" --bdr "#$border"
 	set $term alacritty
-	set $lock swaylock -f -e -i DVI-I-1:"$wallpaper2" -i "$wallpaper" -s fill --indicator-x-position 100 --ring-color "$primary" --ring-clear-color "$highlight" --ring-ver-color "$lightbackgr" --ring-wrong-color "$error" --inside-color 00000000 --inside-clear-color 00000000 --inside-ver-color 00000000 --inside-wrong-color 00000000 --key-hl-color "$highlight" --bs-hl-color "$error" --text-clear-color "$text" --text-ver-color "$text" --text-wrong-color "$text" --text-caps-lock-color "$text"
+	set $lock swaylock -f -e -i "$wallpaper" -s fill --indicator-x-position 100 --ring-color "$primary" --ring-clear-color "$highlight" --ring-ver-color "$lightbackgr" --ring-wrong-color "$error" --inside-color 00000000 --inside-clear-color 00000000 --inside-ver-color 00000000 --inside-wrong-color 00000000 --key-hl-color "$highlight" --bs-hl-color "$error" --text-clear-color "$text" --text-ver-color "$text" --text-wrong-color "$text" --text-caps-lock-color "$text"
 
 
 ### Autostart
@@ -41,9 +40,7 @@
 
 
 ### Output configuration
-   output DP-3 resolution 1920x1080 scale 1 position 0,0 bg $wallpaper2 fill
-   output HDMI-A-2 resolution 848x480 scale 1 position 0,0 bg $wallpaper fill
-   focus output DP-3
+   output * bg $wallpaper fill
    # You can get the names of your outputs by running: swaymsg -t get_outputs
    # more wallpaper are available in /usr/share/backgrounds/sway/
 
@@ -55,7 +52,6 @@
    timeout 180 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
    timeout 185 'systemctl suspend' \
    before-sleep '$lock' \
-# before-sleep 'swaylock --daemonize --ignore-empty-password --image DVI-I-1:$wallpaper2 --image $wallpaper --scaling fill --indicator-x-position 100' \
 
 
 ### Input configuration
