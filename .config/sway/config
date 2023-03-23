@@ -1,11 +1,7 @@
 ### noch zu tun:
-# Farbeinstellungen für Alacritty und Mako und swaynag automatisch anpassen
-# Screenshot optimieren: https://github.com/de-arl/slurpshot
+# Farbeinstellungen für Alacritty, Mako und swaynag aus einer Datei automatisch anpassen (shellskript beim Start ausführen, um configs anzupassen?)
+# Screenshot optimieren, Beispiel: https://github.com/de-arl/slurpshot
 # https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Hibernation
-
-
-### XWayland
-   # xwayland disable
 
 
 ### Variables
@@ -42,6 +38,7 @@
    exec veracrypt -k "" --pim=0 --protect-hidden=no /dev/sda1 /mnt/veracrypt1
    exec riseup-vpn -w
    exec mako --background-color "#$backgr" --text-color "#$text" -c ~/.config/sway/mako.conf
+   # use "xwayland disable" for pure wayland session
    exec_always xrandr --output XWAYLAND0 --primary
 
 
