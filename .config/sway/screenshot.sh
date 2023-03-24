@@ -10,7 +10,7 @@ all)	#Screenshot of all outputs
 
 focus)	# Screenshot of focused window
 	geometry="$(
-		swaymsg -p -t get_tree |
+		swaymsg -t get_tree |
 		grep -A 8 \"focused\"\:\ true |
 		grep -o "[0-9]*" |
 		awk '
