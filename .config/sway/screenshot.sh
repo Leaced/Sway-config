@@ -9,11 +9,16 @@ all)	#Screenshot of all outputs
 	grim -t jpeg -q 100 $FILENAME ;;
 
 focus)	# Screenshot of focused window
-	geometry="$(echo $(
+	geometry=$(
 		swaymsg -t get_tree |
-		grep -A 8 \"focused\"\:\ true |
-		grep -o "[0-9]*") |
-		awk '{printf "%d,%d %dx%d", $2+$1,$3+$1,$4-2*$1,$5-2*$1}')"
+		awk '
+			BEGIN { ORS=" " };
+			lines_after&&lines_after-- {print $2+0};	#loop over n lines. Print only numbers
+			/focused": true/,/window_rect/ {
+				if($1=="\"window_rect\":") lines_after=4;
+				if($1=="\"rect\":") lines_after=2
+			}' |
+		awk '{printf "%d,%d %dx%d", $1+$3,$2+$4,$5,$6}')
 	grim -t jpeg -q 100 -g "$geometry" $FILENAME ;;
 
 choice)	#Screenshot von Auswahl
