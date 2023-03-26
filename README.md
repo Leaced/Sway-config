@@ -11,10 +11,10 @@ My current SwayWM Setup for Arch Linux. On other Distros there could be problems
 ### Setting up
 - install dependencies
 - Place the files in .config in XDG_CONFIG_HOME
-- add the environment variables to your .bashrc
 - make shell-scripts executable (chmod u+x filename.sh)
 - edit the .config/sway/gammastep.ini to your timezone
 - start sway
+- further information can be found in the [sway wiki](https://github.com/swaywm/sway/wiki/Running-programs-natively-under-wayland)
 
 ### Dependencies:
 - [alacritty](https://github.com/alacritty/alacritty)
