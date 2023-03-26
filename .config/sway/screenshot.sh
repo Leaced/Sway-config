@@ -13,7 +13,7 @@ focus)	# Screenshot of focused window
 		swaymsg -t get_tree |
 		awk '
 			BEGIN { ORS=" " };
-			lines_after&&lines_after-- {print $2+0};	#loop over n lines. Print only numbers
+			lines_after&&lines_after-- {print $2};
 			/focused": true/,/window_rect/ {
 				if($1=="\"window_rect\":") lines_after=4;
 				if($1=="\"rect\":") lines_after=2
